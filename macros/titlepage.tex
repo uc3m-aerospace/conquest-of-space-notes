@@ -1,0 +1,36 @@
+% Title page 
+% Must be inputted within \begin{document} \end{document}. 
+% Requires mariomacros.tex and \doctitle, \docsubtitle, \authorname,
+% \authordepartment
+
+%----------------------------------------------------------------------
+\pagenumbering{gobble} % removes page numbering, and pauses it
+
+\begin{titlepage}
+\newgeometry{left=1cm,right=1cm,bottom=1cm,top=1cm}
+\clearpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center} 
+{\fontsize{60pt}{70pt}\selectfont \doctitle \par} 
+\vspace{3cm} 
+{\Huge \sc \docsubtitle} 
+\\[5cm]
+{\huge \authorname}
+\\[1cm]
+{\Large Version \docversion}
+\\[3cm]
+{\Large \sc \href{http://aero.uc3m.es/}{\authordepartment}} 
+\end{center}
+\vspace*{\fill}
+\end{titlepage} 
+%----------------------------------------------------------------------
+
+%---------------------------------------------------------------------- 
+\newgeometry{left=2.8cm,right=2.8cm,bottom=3cm,top=3cm}
+\pagenumbering{arabic} % restores page numering and resumes it
+\thispagestyle{empty}
+\newpage
+ \hbox{}
+\newpage
+%----------------------------------------------------------------------
