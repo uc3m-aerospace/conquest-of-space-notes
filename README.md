@@ -9,6 +9,7 @@ of the UC3Mx MOOC "[The Conquest of Space: space exploration and  rocket science
 Each chapter in the notes corresponds to one week of the course:
 
 1. Astrodynamics: the two body problem
+2. Rocket motion
 
 # Important information
 
@@ -35,4 +36,4 @@ NOTES.
 
 # Release notes
 
-Last updated: 20170222
+Last updated: 20170306
