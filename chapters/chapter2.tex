@@ -1,0 +1,116 @@
+%----------------------------------------------------------------------
+\section[Rockets]{Rocket motion}
+%----------------------------------------------------------------------
+ 
+%----------------------------------------------------------------------
+\paragraph{Action-reaction principle: thrust force}
+%----------------------------------------------------------------------
+
+As the third law of Newton states, for every action there is an equal but
+opposite action elsewhere. By ejecting propellant, a rocket exploits this law
+to create a  thrust force on the vehicle equal to the momentum expelled from
+the rocket per unit time:
+%
+\begin{equation}
+F = \dot{m} c,
+\end{equation}
+%
+where $\dot{m}=-\dd m/\dd t$ is the mass flow rate at which propellant 
+is being ejected, and
+$c$ the exhaust velocity of the propellant leaving the rocket.
+The velocity $c$ is also known as \textbf{specific impulse}, $I_{sp}$. 
+Due to historical reasons, the $I_{sp}$ is sometimes expressed in seconds
+instead of in velocity units, dividing $c$ by $g_0=9.81$ m/s$^2$,
+the gravity acceleration on the ground:
+%
+\begin{equation}
+I_{sp}^v = c \mbox{ (in velocity units)}; \quad 
+I_{sp} \,[\mbox{s}] = \frac{c \,[\mbox{m/s}]}{g_0 \,[\mbox{m/s}^2]}
+\mbox{ (in seconds)}.
+\end{equation}
+
+%----------------------------------------------------------------------
+\paragraph{Tsiolkovsky's rocket equation}
+%----------------------------------------------------------------------
+
+The equation of motion of a rocket system of mass $m$ and velocity $v$ with 
+thrust $F=\dot{m}c$ is:
+%
+\begin{equation}
+m\frac{\dd v}{\dd t} = \dot{m}c = -\frac{\dd m}{\dd t} c
+\end{equation}
+%
+integrating this equation between two instants of time $t_1$ and $t_2$, 
+between which the rocket velocity changes from $v_1$ to $v_2$, and
+the rocket mass changes from $m_1$ to $m_2$,
+requires some knowledge of differential equations. 
+The result is:
+%
+\begin{equation}
+\frac{\dd v}{c} = \frac{\dd m}{m} \Rightarrow \frac{v_2-v_1}{c}
+=\ln\left(\frac{m_1}{m_2}\right).
+\end{equation}
+%
+In this equation, ``$\ln$'' is the natural logarithm. We define the quantity
+$\Delta v = v_2-v_1$, pronounced \emph{delta-vee}, as
+the velocity increase obtained thanks to the rocket, which 
+has used a mass of propellant equal to $m_2-m_1$.
+Each space mission has a well-defined ``cost'' in terms of the 
+necessary $\Delta v$ to accomplish it.
+
+This equation can be inverted using the exponential function ``$\exp$'' into
+%
+\begin{equation}
+\frac{m_2}{m_1} = \exp\left(-\frac{\Delta v}{c}\right) 
+\equiv \exp\left(-\frac{\Delta v}{I_{sp} g_0}\right).
+\end{equation}
+%
+This equation shows that unless the $\Delta v$ of the mission that we want to
+carry out is smaller or comparable to the $I_{sp}g_0$ of our rocket technology,
+the final mass $m_2$ will be tiny compared to the initial mass 
+$m_1$ of the rocket. Typically, sending a small satellite into space requires
+a large rocket launcher for this reason.
+
+%----------------------------------------------------------------------
+\paragraph{Rocket staging}
+%----------------------------------------------------------------------
+
+Tsiolkovsky's rocket equation includes in $m_2$ not only the payload $m_{pay}$
+of the  rocket (e.g. the satellite we want to put into orbit), but also any
+inert mass in the system such as structural mass of the rocket itself,
+$m_{strut}$. Given the adverse scaling of the rocket size, anything that can
+reduce inert mass is desirable.
+
+Staging consists in releasing structural mass as soon as it is no longer 
+needed (e.g. depleted propellant tanks, used-up rockets, etc). This way, the 
+remaining of the trip is done with a lower inert mass, improving the overall
+mass performance of the rocket system. In effect, this is the same as
+stacking several rockets on top of each other, and igniting them in series.
+
+To solve staging problems, it is useful to write down the initial mass of 
+the $i$-th rocket stage as
+%
+\begin{equation}
+m_{0,i} = m_{fuel,i} + m_{struct,i} + m_{pay,i},
+\end{equation}
+%
+and note that the payload of the $i$-th stage is actually the next stage, 
+$(i+1)$. The advantages of staging are great for systems with up to 3--4 
+stages, but beyond that, the reduction of the initial system mass is very 
+limited.
+
+%----------------------------------------------------------------------
+\paragraph{Impulsive maneuvers}
+%----------------------------------------------------------------------
+
+Rocket maneuvers allow to change the trajectory (and thus the orbit) of a
+spacecraft. Chemical rockets provide large thrust levels for short periods of
+time; hence, we can simplify the analysis of chemical rocket maneuvers by
+imagining that the spacecraft changes instantaneously its velocity vector $\bm
+v$ when the maneuver takes place. This approximation is known as the
+\emph{impulsive maneuver model}. Using vector operations,  velocity changes
+from $\bm v_1$ to $\bm v_2=\bm v_1 + \Delta \bm v$, while  the position vector
+$\bm r$ remains unchanged during the instantaneous rocket firing.
+
+The Hohmann transfer explained in the course is an example of application
+of the impulsive maneuver model.
