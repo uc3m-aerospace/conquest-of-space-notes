@@ -1,0 +1,82 @@
+%----------------------------------------------------------------------
+\section[Space Environment]{Space Environment}
+%----------------------------------------------------------------------
+ 
+%----------------------------------------------------------------------
+\paragraph{Isothermal atmosphere model}
+%----------------------------------------------------------------------
+
+Earth's atmosphere is composed of many different layers. Temperature varies in
+a non-trivial way, inverting its gradient several times. Pressure, however,
+decreases monotonically as we ascend in the atmosphere. Modeling the 
+atmospheric pressure and density in the upper layers of the atmosphere is 
+important to determine air drag on low-Earth-orbit satellites.
+
+We can pose a very simple model for pressure if we assume that temperature is
+constant in the atmosphere $T=\const$. This is only an approximation of
+course, and more advanced models exist that take temperature variation with
+altitude into account. We call this model the ``isothermal atmosphere'' model.
+
+Consider a small cylindrical column of air of height $\dd h$, and call $A$ the
+area of its bottom and upper surfaces. If air density is $\rho$ at this height,
+the weight of this column of air is simply $\rho g A \dd h$, where $g$ is 
+the gravity acceleration.
+
+Since this column is in equilibrium (i.e., it is not falling or rising), this
+weight must be compensated by the pressure difference $\dd p$ between its
+bottom  and upper surfaces. Then, we can write the following force balance
+equation:
+%
+\begin{equation}
+Ap - A(p+\dd p) = \rho g A \dd h \Rightarrow \dd p = -\rho g \dd h
+\label{eq:atmforcebalance}
+\end{equation}
+%
+Using the ideal gas law $p=\rho R T/M$, where $R=8.314$ J/(K$\cdot$mol) is the
+universal gas constant and $M$ is the gas molecular mass ($0.029$ kg/mol for
+air), we can substitute $\rho$ and integrate this equation to obtain an 
+exponential evolution of pressure with height:
+%
+\begin{equation}
+\frac{\dd p}{p} = - \frac{gM}{RT}  \dd h \Rightarrow 
+p=p_0 \exp\left(\frac{-h}{h_0}\right)
+\label{eq:exponentialatm}
+\end{equation}
+%
+where $p_0$ is the pressure at $h=0$ and $h_0=RT/(gM)$.
+
+%----------------------------------------------------------------------
+\paragraph{Solar radiation}
+%----------------------------------------------------------------------
+
+The Sun emits a tremendous amount of electromagnetic radiation at all 
+frequencies and in all directions. At the Earth, we receive about
+%
+\begin{equation}
+S_\Earth = 1366 \mbox{ W/m}^2
+\end{equation}
+%
+of radiation. Naturally, the power per unit area (i.e. the \emph{irradiance})
+increases as we get closer to the Sun, and decreases as we get away from it.
+
+Due to conservation of energy, the irradiance $S(r)$ integrated over a the 
+surface of a sphere of radius $r$ from the Sun is a constant independent of 
+$r$:
+%
+\begin{equation}
+4\pi r^2 S(r) = 4\pi r_\Earth S_\Earth \Rightarrow 
+S(r)=S_\Earth \frac{r_\Earth^2}{r^2}
+\end{equation}
+%
+where $r_\Earth = 150$ million km (1 astronomical unit) is roughly the 
+distance between the Earth and the Sun. This formula is useful to compute the 
+solar irradiance anywhere in the solar system, if we know the distance to the 
+Sun, $r$.
+
+Solar irradiance affects how much electric power we can generate with solar 
+arrays, and it defines how hot our spacecraft will get when illuminated.
+It also affects how much solar radiation pressure our spacecraft will feel.
+
+
+
+
