@@ -1,0 +1,140 @@
+%----------------------------------------------------------------------
+\section[Space Systems I]{Space Systems I}
+%----------------------------------------------------------------------
+ 
+%----------------------------------------------------------------------
+\paragraph{Breakdown of a space system}
+%----------------------------------------------------------------------
+
+A space system consists of several segments working together, where at least
+one of them is spaceborne. The common segments of a space system are:
+%
+\begin{enumerate}
+\item The space segment: this is the spacecraft (or the various spacecraft) 
+that are in orbit
+\item The ground segment: the control centers and ground stations used to 
+track, monitor, and command the space segment
+\item The launcher segment: the launch vehicles used to set the space segment 
+in orbit.
+\end{enumerate}
+%
+Within the space segment, each spacecraft can be decomposed into the 
+\textbf{payload} (i.e., the instruments, transponders, etc that the client 
+wants to have in orbit) and the \textbf{spacecraft platform or bus} (
+consisting of all the subsystems needed to support the operation of the 
+payload and keep the satellite alive).
+
+There are several spacecraft platform subsystems:
+%
+\begin{enumerate}
+\item Power subsystem: in charge of producing, accumulating, distributing 
+electric power to the different loads.
+\item Telecommunications: uplink (telecommand) and downlink (telemetry and 
+mission data) require of a communication subsystem to work.
+\item Attitude determination and control subsystem: this subsystem determines 
+the current orientation (attitude) of the spacecraft using sensors, and then 
+changes it to the desired orientation using actuators like momentum wheels.
+\item Propulsion subsystem: needed if the satellite must perform propulsive
+maneuvers. Every now and then, small corrective maneuvers are 
+required to maintain the same operational orbit, or to desaturate the ADCS.
+\item Data handling: the on board computer must process the incoming commands 
+from the ground segment, monitor and control all the other subsystems, produce 
+the telemetry that will be sent to the ground, and store and sometimes process 
+the mission data until it can be delivered to a ground station.
+\item Structural subsystems: the structure is in charge of maintaining the 
+geometrical distribution of the spacecraft, and enduring the stresses that 
+occur during launch.
+\item Thermal control subsystem: this subsystem must deal with the changing 
+environmental conditions (sunlight/eclipse, different spacecraft orientations 
+with respect to the Sun), and maintain the temperature of each component 
+within the allowable ranges at all times.
+\item Environmental control and life support: In case of manned missions, it 
+is necessary to provide air, water, and food to the crew, keep temperature and 
+humidity at reasonable levels, and to dispose or recycle the generated waste.
+\end{enumerate}
+ 
+%----------------------------------------------------------------------
+\paragraph{Telecommunications: link budget equation}
+%----------------------------------------------------------------------
+
+When trying to reach the ground from a spacecraft, the signal in our 
+communication must be sufficiently focused and have enough power for the 
+ground antenna to be able to receive it and tell the signal apart from the 
+background electromagnetic noise.
+
+If we have determined that the minimum energy per bit of information for a successful communication link is $E_b$, we can write down the link budget equation as follows:
+%
+\begin{equation}
+E_b \leq \frac{P L_t L_r L_a L_s G_t G_r}{R}
+\end{equation}
+%
+where:
+%
+\begin{itemize}
+\item $P$ is the power, i.e. energy per unit time, spent by the spacecraft in 
+sending the signal
+\item $L_t$ are any efficiency losses in the transmitter. E.g., if only $80\%$ 
+of the input power eventually becomes the signal power, then $L_t=0.8$.
+\item $L_r$ contemplates any similar losses at the receiving end of the link. 
+\item $L_a$ are any losses that may exist due to the propagation of the signal 
+through the atmosphere. The atmosphere may damp or absorb part of the signal 
+power, meaning that only a fraction of the power makes it to the ground. The 
+absorption depends on the wavelength of the signal, $\lambda$.
+\item $L_s$ are the free space losses, which scale with the transmission 
+distance $d$. Since the emitted power at the satellite expands outwards 
+roughly spherically, the power per unit area decreases as $1/d^2$. $L_s$ is 
+formally defined as $L_s=\lambda^2 /(4\pi d)^2$.
+\item $G_t$ is the gain of the transmitting antenna, i.e., how well the 
+antenna concentrates the radiated power in the desired direction, rather than 
+emitting in all directions. It is defined as $G_t=4\pi A_t/\lambda^2$, 
+where $A_t$ is the effective area of the antenna.
+\item $G_r$ is the gain of the receiving antenna, i.e., how well the 
+antenna selectively listens only to the desired direction, rather than all 
+directions. It is defined as $G_r=4\pi A_r/\lambda^2$, where $A_r$ is the 
+effective area of the antenna.
+\item $R$ is the data rate of the transmission, i.e., how many bits per unit 
+time are being sent.
+\end{itemize}
+%
+The product $PL_t G_t$ is known as the \emph{effective isotropic radiated 
+power} (EIRP).
+
+%----------------------------------------------------------------------
+\paragraph{Rotational dynamics: attitude determination and control}
+%----------------------------------------------------------------------
+
+The rotational dynamics of the spacecraft in orbit are governed by the angular 
+momentum equation---the rotational analogous of the (linear) Newton's second 
+law.
+%
+\begin{equation}
+\frac{\dd \bm H_G}{\dd t} = \bm M_G
+\end{equation}
+%
+where $\bm H_G$ is the total angular momentum of the spacecraft about its 
+center of mass $G$, and $\bm M_G = \sum(\bm r - \bm r_G)\times \bm F$ the 
+moment of all forces about the center of mass.
+
+While this equation may seem complicated, the important aspect to be
+understood in this course is that in the absence of external moments of forces
+(i.e., if $\bm M_G = 0$), the total angular momentum of the spacecraft is
+conserved. This means that we cannot change its state of rotation, unless the
+spacecraft is composed of two or more bodies and we transmit angular momentum
+from one body to another, or unless we use propulsion to change the total
+angular momentum.
+
+For instance, imagine a cubic spacecraft floating in empty space, with a wheel
+in its interior. If the cube is not rotating initially, we can make it rotate
+about the axis of the wheel if we spin up or down the wheel. Observe that
+during the whole maneuver, the total angular momentum (sum of the angular
+momentum of the cube and the wheel) remain constant.
+
+This mechanism is used in the ADCS to control the orientation and rotation
+state of the spacecraft in the presence of perturbations that create a moment
+of forces. However, when the angular momentum stored in the wheels is too
+large, the rotational speed of the wheels may reach its maximum, and we need
+to use the propulsion system to \emph{desaturate} the wheels and start over.
+
+
+
+
