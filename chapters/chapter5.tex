@@ -19,7 +19,7 @@ system (as solar cells degrade with time). All in all, we can write the
 produced electric  power by the solar arrays (SA) as:
 %
 \begin{equation}
-P_{SA} = \eta_{SA} A_{SA} S_{Sun}
+P_{SA} = \eta_{SA} A_{SA} S
 \end{equation}
 %
 where:
@@ -27,9 +27,9 @@ where:
 \begin{itemize}
 \item $\eta_{SA}$ is the overall solar array efficiency.
 \item $A_{SA}$ is the area of the solar array.
-\item $S_{Sun}$ is the solar irradiance at the spacecraft location, i.e. the 
+\item $S$ is the solar irradiance at the spacecraft location, i.e. the 
 power per unit area of the solar radiation. The SI units are W/m$^2$. 
-For spacecraft orbiting the Earth, $S_{Sun}\simeq 1366$ W/m$^2$. If the 
+For spacecraft orbiting the Earth, $S=S_{\Earth}\simeq 1366$ W/m$^2$. If the 
 spacecraft travels closer to the Sun (e.g. to Venus or Mercury), this number 
 increases; if it travel away from the Sun (e.g. to Mars or Jupiter), this 
 number decreases.
@@ -43,8 +43,9 @@ An Earth satellite spends some time in the sunlight and some time in eclipse
 in each orbit. We can estimate the eclipse time in the case of a circular
 orbit assuming that the shadow of the Earth is cylindrical away from the Sun,
 and that the satellite track crosses fully this shade cylinder.
-The angle $\theta$ in the figure is $\theta = \arcsin{R_E/(R_E+H)}$, where
-$R_E$ is the radius of the Earth and $H$ the orbital altitude of the
+The angle $\theta$ in the figure is 
+$\theta = \arcsin[R_\Earth/(R_\Earth+H)]$, where
+$R_\Earth$ is the radius of the Earth and $H$ the orbital altitude of the
 spacecraft. The fraction of the orbit that the spacecraft is in eclipse
 is then equal to $2\theta/(2\pi)$. For LEO satellites, this can be about
 $1/3$ of the orbit.
@@ -62,7 +63,9 @@ then the solar arrays must provide a power
 P_{SA} = P \frac{T_{orb}}{T_{light}}
 \end{equation}
 %
-where $T_{orb} = 2\pi \sqrt{GM_E/(R_E +H)}$ is the orbital period, i.e., the
+where $T_{orb} = 2\pi \sqrt{GM_\Earth/(R_\Earth+H)}$ is the 
+orbital period around the Earth ($G$ is the gravitational constant,
+and $M_\Earth$ is Earth's mass), i.e., the
 time it takes the satellite to complete one orbit, and $T_{light}$ is the
 time spent in sunlight in one orbit.
 
@@ -101,8 +104,8 @@ environment and neighboring components into $A$, minus the heat that is
 conducted or radiated away from $A$, is related to the rate at which the temperature of component $A$ changes in time:
 %
 \begin{equation}
-C_A \frac{\dd T_A}{\dd t} = Q_{in,internal} + 
-Q_{in,environment} - Q_{out}.
+C_A \frac{\dd T_A}{\dd t} = Q_{in,int} + 
+Q_{in,env} - Q_{out}.
 \end{equation}
 %
 In this thermal energy balance equation, $C_A$ is the thermal capacity of
@@ -116,7 +119,7 @@ evolution of the temperature of each component under different operating
 conditions and environmental heat loads (eclipse, sunlight, etc).
 
 If we consider an isolated component with no neighboring elements to conduct
-or radiate heat to and from, the term $Q_{in,environment}$ represents the
+or radiate heat to and from, the term $Q_{in,env}$ represents the
 incoming  radiation heat from space, and the term $Q_{out}$ represents the
 outgoing radiation heat emitted from the object into space. Then, the external
 heat sources from the environment are the solar radiation, the planetary
@@ -127,9 +130,9 @@ to be at $4$ K, and can be ignored in most situations.
 Of these loads, the Sun is the dominant one:
 %
 \begin{align}
-Q_{in,environment} &= Q_{in,Sun} + Q_{in,albedo} + Q_{in,planet}
+Q_{in,env} &= Q_{in,Sun} + Q_{in,albedo} + Q_{in,planet}
 \\
-Q_{in,Sun} &= \alpha_{Sun} A_\alpha S_{Sun}
+Q_{in,Sun} &= \alpha_{Sun} A_\alpha S
 \end{align}
 %
 where: 
@@ -141,8 +144,8 @@ It is a non-dimensional number that ranges from 0 (no absorption) to 1 (
 maximum absorption).
 \item $A_\alpha$ is the effective area of absorption of the component that is 
 exposed to sunlight.
-\item $S_{Sun}$ is the solar irradiance at the spacecraft location as explained before, i.e. the 
-power per unit area of the solar radiation. 
+\item $S$ is the solar irradiance at the spacecraft location as explained 
+before, i.e. the power per unit area of the solar radiation. 
 \end{itemize}
 %
 
