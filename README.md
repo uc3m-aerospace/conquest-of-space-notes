@@ -11,6 +11,8 @@ Each chapter in the notes corresponds to one week of the course:
 1. Astrodynamics: the two body problem
 2. Rocket motion
 3. Space Environment
+4. Space Systems I
+5. Space Systems II
 
 # Important information
 
@@ -37,4 +39,4 @@ NOTES.
 
 # Release notes
 
-Last updated: 20170306
+Last updated: 20170326
