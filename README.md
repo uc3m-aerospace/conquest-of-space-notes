@@ -13,6 +13,8 @@ Each chapter in the notes corresponds to one week of the course:
 3. Space Environment
 4. Space Systems I
 5. Space Systems II
+6. Global Navigation Satellite Systems
+7. Fundamentals of electric propulsion
 
 # Important information
 
@@ -39,4 +41,4 @@ NOTES.
 
 # Release notes
 
-Last updated: 20170326
+Last updated: 20170403

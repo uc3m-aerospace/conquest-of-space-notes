@@ -1,0 +1,134 @@
+%----------------------------------------------------------------------
+\section[GNSS]{Global Navigation Satellite Systems}
+%----------------------------------------------------------------------
+ 
+%----------------------------------------------------------------------
+\paragraph{Operation principles of a GNSS position fix}
+%----------------------------------------------------------------------
+
+The basic ideas behind the operation of a GNSS can be summarized as follows:
+%
+\begin{enumerate}
+
+\item The satellites of a GNSS constellation each have a very precise on
+board clock that is synchronized with all other clocks in the constellation.
+
+\item The position vector of each satellite in the constellation is known (or
+can be made known) to any user of the system at all times.
+
+\item Each satellite broadcasts a time-stamped, identifiable signal in all
+directions. Each signal encodes, among other pieces of information, the exact
+time at which the signal was broadcast. 
+
+\item Any number of users can receive these signals simultaneously: they are
+all passive (i.e. receiving) users.
+
+\item A user receiving a satellite signal can compare the broadcast time with
+his/her own clock: the travel time for the signal $\Delta t = t_{RX} - t_{TX}$
+is a direct measure of the distance (or range) $d$ between the user and the
+emitting satellite, since the speed of light $c$  is a physical constant: $d =
+c\Delta t$.
+
+\item Assuming the instantaneous position of the satellites is known to the 
+user, using 3 such distance measurements to 3 different satellites allows, in 
+principle, to determine the 3 unknowns $x,y,z$ of the position of the user.
+
+\item However, for this to work, the user would need to have his/her clock
+perfectly synchronized with the constellation clocks. As this would be 
+impractical, a 4th distance measurement with a 4th satellite is needed to 
+determine the 4 unknowns of the problem: $x,y,z$ and $t$, the time of the user.
+
+\end{enumerate}
+%
+Obtaining a position (and time) fix for a user requires therefore solving a 
+system of 4 non-linear equations, one for each pseudo-range measurement:
+%
+\begin{align}
+c^2(t_{RX} - t_{TX,1})^2 &= 
+(x_{RX} - x_{TX,1})^2 + (y_{RX} - y_{TX,1})^2 + (z_{RX} - z_{TX,1})^2,
+\\
+c^2(t_{RX} - t_{TX,2})^2 &= 
+(x_{RX} - x_{TX,2})^2 + (y_{RX} - y_{TX,2})^2 + (z_{RX} - z_{TX,2})^2,
+\\
+c^2(t_{RX} - t_{TX,3})^2 &= 
+(x_{RX} - x_{TX,3})^2 + (y_{RX} - y_{TX,3})^2 + (z_{RX} - z_{TX,3})^2,
+\\
+c^2(t_{RX} - t_{TX,4})^2 &= 
+(x_{RX} - x_{TX,4})^2 + (y_{RX} - y_{TX,4})^2 + (z_{RX} - z_{TX,4})^2,
+\end{align}
+%
+where $x_{TX,i},y_{TX,i},z_{TX,i}$ is the position of the $i$-th transmitting
+satellite, $t_{TX,i}$ the time at which the signal from the $i$-th satellite
+was sent, and $x_{RX},y_{RX},z_{RX},t_{RX}$ are the unknowns (position and 
+time of the receiving user).
+
+%----------------------------------------------------------------------
+\paragraph{Operation principles of a GNSS velocity fix}
+%----------------------------------------------------------------------
+
+Once the procedure to determine the position is clear, it would be possible to
+compute the velocity of a user by observing how his/her position changes in
+time. In other words, by taking the derivative of the position vector:
+%
+\begin{equation}
+\bm v = \frac{\dd \bm r}{\dd t} \simeq \frac{\bm r(t_2)-\bm r(t_1)}{t_2-t_1}. 
+\end{equation}
+%
+
+There is, however, another, more accurate way to determine the user's velocity:
+using the Doppler shift of the signal frequency. This is done according to the
+following basic ideas:
+%
+\begin{enumerate}
+
+\item The exact frequency at which the satellite signals are emitted is known 
+to the users of the system.
+
+\item The velocity vector of each satellite in the constellation is known (or
+can be made known) to any user of the system at all times.
+
+\item Whenever the distance between a satellite and a user changes in time 
+(either because the satellite is moving or the user is moving),
+the perceived signal frequency by the user changes slightly: the frequency 
+will increase if the two of them are coming closer together, and it will 
+decrease if they are moving apart. This physical phenomenon is known as 
+\emph{Doppler shift}.
+
+\item Any user listening to the satellite signals can determine the Doppler 
+shift of any of them, $\Delta f = f_{RX} - f_{TX}$.
+
+\item As the user knows the velocity of each satellite, combining 3 such 
+measurements with 3 different satellites 
+it is possible to determine the user's velocity (3 unknowns: $v_x,v_y,v_z$).
+
+\item However, the cheap user's clock may have a drift with time. This may
+lead the user to wrong measurements of the Doppler shifts. Thus, a 4th 
+measurement with a 4th satellite is needed to determine the drift rate of the 
+user clock as an extra unknown.
+
+\end{enumerate} 
+%
+Obtaining a velocity (and clock rate) fix for a user requires therefore
+solving the following system of 4 non-linear equations:
+%
+\begin{align}
+\dot{t}_{RX}f_{RX,1}-f_{TX,1} = \frac{f_{TX,1}}{c} (\bm v_{RX}-\bm v_{TX,1}) 
+\cdot \frac{\bm r_{RX}-\bm r_{TX,1}}{\left|\bm r_{RX}-\bm r_{TX,1}\right|}
+\\
+\dot{t}_{RX}f_{RX,2}-f_{TX,2} = \frac{f_{TX,2}}{c} (\bm v_{RX}-\bm v_{TX,2}) 
+\cdot \frac{\bm r_{RX}-\bm r_{TX,2}}{\left|\bm r_{RX}-\bm r_{TX,2}\right|}
+\\
+\dot{t}_{RX}f_{RX,3}-f_{TX,3} = \frac{f_{TX,3}}{c} (\bm v_{RX}-\bm v_{TX,3}) 
+\cdot \frac{\bm r_{RX}-\bm r_{TX,3}}{\left|\bm r_{RX}-\bm r_{TX,3}\right|}
+\\
+\dot{t}_{RX}f_{RX,4}-f_{TX,4} = \frac{f_{TX,4}}{c} (\bm v_{RX}-\bm v_{TX,4}) 
+\cdot \frac{\bm r_{RX}-\bm r_{TX,4}}{\left|\bm r_{RX}-\bm r_{TX,4}\right|}
+\end{align}
+%
+where $\bm v_{TX,i}$ is the velocity of the $i$-th transmitting
+satellite, $f_{TX,i}, f_{RX,i}$ the frequencies at which the signal from the 
+$i$-th satellite was respectively broadcast and received,
+and $\bm v_{RX}, \dot{t}_{RX}$ are the unknowns (position and 
+clock drift rate of the receiving user). Note that the vector
+$(\bm r_{RX}-\bm r_{TX,i})/\left|\bm r_{RX}-\bm r_{TX,i}\right|$ is a unit 
+vector that points in the direction from the $i$-th satellite to the user.

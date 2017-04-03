@@ -1,0 +1,63 @@
+%----------------------------------------------------------------------
+\section[Electric Propulsion]{Fundamentals of Electric Propulsion}
+%----------------------------------------------------------------------
+ 
+%----------------------------------------------------------------------
+\paragraph{Key parameters of electric propulsion}
+%----------------------------------------------------------------------
+
+While chemical propulsion is \emph{energy limited}, as its performance depends
+on the amount of energy per unit mass stored in the chemical bonds of the
+propellant, electric propulsion is \emph{power limited}: the performance
+depends on how  much electric power is available on board.
+
+As with chemical propulsion, there are two basic parameters that characterize 
+an electric thruster:
+%
+\begin{enumerate}
+
+\item Specific impulse $I_{sp}$: this is a measure of the velocity at which
+the propellant is ejected from the thruster. A higher specific impulse allows
+fulfilling a propulsive mission (i.e. providing a given $\Delta V$ to the
+spacecraft) at a much lower expense of propellant. Electric propulsion devices
+have $I_{sp}^v$ in the order of $10$--$100$ km/s (about $1000$--$10000$ s if
+$I_{sp}$is expressed in seconds), whereas the best chemical rockets can only provide about $5$ km/s (about $500$ s).
+
+\item Thrust $F$: the force the propulsion system can generate to accelerate
+the spacecraft. Contrary to chemical propulsion, where $F$ can be very large,
+electric propulsion thrust levels are comparatively small: current thrusters
+provide $< 1$ N of force (typically, about $50$--$200$ mN).  Thrust is equal
+to the propellant mass flow rate $\dot m$ used in the thruster times the
+exhaust velocity, i.e., its specific impulse in velocity units: 
+%
+\begin{equation}
+F=\dot m I_{sp}^v.    
+\end{equation}
+
+
+\end{enumerate}
+%
+Electric propulsion provides tiny thrust levels, but it does so very 
+efficiently, using very little propellant. This enables space missions that 
+would be too ambitious to be carried out only with chemical propulsion, and to 
+lower the cost of existing missions. 
+Note, however, that electric propulsion cannot fully replace chemical 
+propulsion: large thrust levels are required to take off from the surface of a 
+planet, and for some quick propulsive maneuvers.
+
+Apart from $I_{sp}$ and $F$, there is another important figure of merit of an 
+electric thruster:
+%
+\begin{enumerate}[resume]
+
+\item Thrust efficiency $\eta_T$: it is a measure of how the input power $P$
+is  used for propulsion. The power contained in a jet of mass flow rate $\dot
+m$  and exhaust velocity $I_{sp}^v$ is $\dot m (I_{sp}^v)^2/2$. The thrust
+efficiency is defined as the ratio of the jet power over the input power:
+%
+\begin{equation}
+\eta_T = \frac{\dot m (I_{sp}^v)^2}{2P} = \frac{ F I_{sp}^v}{2P} =  
+\frac{ F^2}{2\dot m P} 
+\end{equation}
+
+\end{enumerate}
